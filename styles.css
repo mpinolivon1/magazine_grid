@@ -1,0 +1,194 @@
+*, ::before, ::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Baskervville', serif;
+    color: linen;
+    background-color: rgb(20, 30, 40);
+}  
+
+h1{
+    font-family: 'Anton', sans-serif;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: linen;
+}
+
+main {
+    display: grid;
+    grid-template-columns: minmax(2rem, 1fr) minmax(min-content, 94rem) minmax(2rem, 1fr);
+    row-gap: 3rem;
+}
+
+.heading {
+    grid-column: 2/3; /*grid-column es la abreviatura de grid-column-start y grid-column-end. grid-column le dice al elemento de la cuadrícula en qué línea de cuadrícula debe comenzar y terminar*/
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* crea 2 columnas de 1fr cada uno*/
+    row-gap: 1.5rem;
+}
+
+.text {
+    grid-column: 2 / 3;
+    font-size: 1.8rem;
+    letter-spacing: 0.6px;
+    column-width: 25rem; /*Para crear cuadrículas sin usar grid usamos esta propiedad*/
+    text-align: justify;
+}
+
+.hero {
+    grid-column: 1 / -1;
+    position: relative;
+}
+
+img {
+width: 100%;
+object-fit: cover; /*Para poder determinar como debe ajustarse en su contenedor. En este caso, cover configurará la imagen para llenar el contenedor, recortándola según sea necesario para evitar cambiar la relación de aspecto.*/
+}
+
+.hero-title {
+    text-align: center;
+    color: orangered;
+    font-size: 8rem;
+}
+
+.hero-subtitle {
+    font-size: 2.4rem;
+    color: orangered;
+    text-align: center;
+}
+
+.author {
+    font-size: 2rem;
+    font-family: Raleway, sans-serif;
+}
+
+.author-name a:hover {
+    background-color: #306203;
+}
+
+.publish-date {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.social-icons {
+    display: grid;
+    font-size: 3rem;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-flow: column; /* grid-auto-flow crea columnas adicionales  // column le indicará al algoritmo que cree nuevas columnas para el contenido según sea necesario */
+    grid-auto-columns: 1fr; /*Establece el tamaño de las columnas automáticas en una cuadrícula cuando no se han definido explícitamente mediante grid-template-columns*/
+    align-items: center;
+}
+
+.first-paragraph::first-letter {
+    font-size: 6rem; /*permite apuntar a la primera letra en el contenido de texto de un elemento*/
+    color: orangered;
+    float : left;
+    margin-right: 1rem;
+}
+
+hr {
+    margin: 1.5rem 0; /*1.5rem en la parte superior e inferior y 0 de margen en el lado derecho e izquierdo*/
+    border: 1px solid rgba(120, 120, 120, 0.6);
+}
+
+.quote {
+    color: #00beef;
+    font-size: 2.4rem;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+.quote::before {
+    content:'" ';
+}
+
+.quote::after {
+    content:' "';
+}
+
+.text-with-images {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.lists {
+    list-style-type: none;
+    margin-top: 2rem;
+}
+
+.lists li {
+    margin-bottom: 1.5rem;
+}
+
+.list-title, .list-subtitle {
+    color: #00beef;
+}
+
+.image-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /*Las columnas mantienen un ancho fijo según el contenedor*/
+    grid-template-rows: repeat(3, min-content); /*le dará a nuestra cuadrícula filas que se ajustan en altura según el contenido*/
+    gap: 2rem;
+    place-items: center;
+}
+
+.image-1, .image-3 {
+    grid-column: 1 / -1; /*Esto permitirá que la primera y la tercera imagen abarquen todo el ancho de la cuadrícula.*/
+    /*
+        1 especifica que el elemento comienza en la primera línea de la cuadrícula en el eje de las columnas.
+        -1 especifica que el elemento termina en la última línea de la cuadrícula en el eje de las columnas.
+    */
+}
+
+@media only screen and (max-width: 720px) {
+    .image-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .text-with-images {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .hero-title {
+        font-size: 6rem;
+    }
+
+    .hero-subtitle, .author, .quote, .list-title {
+        font-size: 1.8rem;
+    }
+
+    .social-icons {
+        font-size: 2rem;
+    }
+
+    .text{
+        font-size: 1.6rem;
+    }
+
+}
+
+
+@media only screen and (max-width: 420px) {
+    .hero-title{
+        font-size: 4.5rem;
+    }
+}
